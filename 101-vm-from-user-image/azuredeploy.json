@@ -57,7 +57,7 @@
     "vmSize": {
       "type": "string",
       "metadata": {
-        "description": "This is the size of your VM"
+        "description": "This is the size of your VM ie: Standard_D1"
       }
     }
   },
