@@ -5,19 +5,19 @@
     "userImageStorageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "This is the name of the your storage account"
+        "description": "This is the name of the your storage account ie: agridockerstorage"
       }
     },
     "userImageStorageContainerName": {
       "type": "string",
       "metadata": {
-        "description": "This is the name of the container in your storage account"
+        "description": "This is the name of the container in your storage account ie: vhds"
       }
     },
     "userImageVhdName": {
       "type": "string",
       "metadata": {
-        "description": "This is the name of the your customized VHD"
+        "description": "This is the name of the your captured VHD ie: agridockersvr1201618104652.vhd"
       }
     },
     "dnsNameForPublicIP": {
@@ -36,6 +36,12 @@
       "type": "securestring",
       "metadata": {
         "description": "Password for the Virtual Machine"
+      }
+    },
+    "vmMachineName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name for the Virtual Machine"
       }
     },
     "osType": {
@@ -57,10 +63,10 @@
   },
   "variables": {
     "location": "[resourceGroup().location]",
-    "publicIPAddressName": "myPublicIP",
-    "vmName": "myVM",
-    "virtualNetworkName": "myVNET",
-    "nicName": "myVMNic",
+    "vmName": "[parameters('vmMachineName')]",
+    "publicIPAddressName": "[concat(variables('vmName'),'IP')]",
+    "virtualNetworkName": "[concat(variables('vmName'),'VNET')]",
+    "nicName": "[concat(variables('vmName'),'Nic')]",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet-1",
     "subnet1Prefix": "10.0.0.0/24",
